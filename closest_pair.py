@@ -1,6 +1,7 @@
 import os
 import csv
 import matplotlib.pyplot as plt
+import math
 
 cwd_path = os.getcwd()
 file_path = 'files'
@@ -40,7 +41,8 @@ def draw_data(data_points, closest_pair=[]):
         color=['blue' if point not in closest_pair else 'red' for point in data_points]
     )
     plt.show()
-    
+
+
 def closest_pair_BF(array):
     min_dist = math.dist(array[0], array[1])
     point_1 = array[0]
@@ -49,6 +51,7 @@ def closest_pair_BF(array):
 
     if num_points == 2:
         return point_1, point_2, min_dist
+
     for i in range(num_points - 1):
         for j in range(i + 1, num_points):
             if i != 0 and j != 1:
@@ -56,6 +59,7 @@ def closest_pair_BF(array):
                 if dist < min_dist:
                     min_dist = dist
                     point_1, point_2 = array[i], array[j]
+
     return point_1, point_2, min_dist
 
 
@@ -65,6 +69,8 @@ def main(file_name):
 
     # draw points
     draw_data(data_points)
+
+    # find the closest pair - BRUTE FORCE
 
 
 if __name__ == '__main__':
